@@ -9,10 +9,10 @@ export default function Login() {
         e.preventDefault()
         const email = document.getElementById("exampleInputEmail1").value
         const password = document.getElementById("exampleInputPassword1").value
-        const host = "http://localhost:5000"
+        const host = "https://inotebook-fguk.onrender.com:5000"
+        // const host = "http://localhost:5000"
         // fetch api 
-        const url = process.env.PORT || 5000
-        // const url = `${host}/api/users/auth/Login`
+        const url = `${host}/api/users/auth/Login`
         const response = await fetch(url, {
             method: 'post',
             headers: {

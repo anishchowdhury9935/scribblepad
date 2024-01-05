@@ -11,7 +11,7 @@ export default function Login() {
         const password = document.getElementById("exampleInputPassword1").value
         const host = "http://localhost:5000"
         // fetch api 
-        const url = process.env.PORT || 3000
+        const url = process.env.PORT || 5000
         // const url = `${host}/api/users/auth/Login`
         const response = await fetch(url, {
             method: 'post',

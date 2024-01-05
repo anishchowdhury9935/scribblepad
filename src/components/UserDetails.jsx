@@ -6,7 +6,7 @@ export default function UserDetails() {
     const [Date, setDate] = useState('')
     async function LogDtails () {
         try {
-            const host = process.env.PORT || 3000
+            const host = process.env.PORT || 5000
             // const host = "http://localhost:5000"
             const auth_token = localStorage.getItem('token');
             const url = `${host}/api/users/auth/getUser`

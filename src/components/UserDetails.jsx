@@ -6,7 +6,7 @@ export default function UserDetails() {
     const [Date, setDate] = useState('')
     async function LogDtails () {
         try {
-            const host = "https://inotebook-backend-odkj.onrender.com:10000" 
+            const host = "https://inotebook-backend-odkj.onrender.com" 
             // const host = "http://localhost:5000"
             const auth_token = localStorage.getItem('token');
             const url = `${host}/api/users/auth/getUser`

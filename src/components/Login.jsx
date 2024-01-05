@@ -9,7 +9,7 @@ export default function Login() {
         e.preventDefault()
         const email = document.getElementById("exampleInputEmail1").value
         const password = document.getElementById("exampleInputPassword1").value
-        const host = "https://inotebook-backend-odkj.onrender.com:10000" 
+        const host = "https://inotebook-backend-odkj.onrender.com" 
         // const host = "http://localhost:5000"
         // fetch api 
         const url = `${host}/api/users/auth/Login`

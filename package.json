@@ -14,11 +14,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start1": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "wholeserver": "concurrently \"npm run start\" \"nodemon inotebook_backend/index.js\""
+    "start": "concurrently \"npm run start1\" \"nodemon inotebook_backend/index.js\""
   },
   "eslintConfig": {
     "extends": [

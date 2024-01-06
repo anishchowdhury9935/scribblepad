@@ -76,9 +76,9 @@ export default function Notes() {
                 <h4 className='your_notes' style={obj_your}>Your notes:</h4>
                 <div className="container">
                     {notes.length === 0 && notes_Nothing()}
-                    <div className="nothing_notes"style={obj_notes}>
+                    <div className="nothing_notes"style={{...obj_notes,"height":"100%"}}>
                         <h3>You haven't add any notes!</h3>
-                        <img  style={{ "maxWidth":"100vw" }} src={img} alt="alternatetext"></img >
+                        <img src={img} alt="alternatetext"></img >
                     </div>
                 </div>
                 {notes.map((note) => {

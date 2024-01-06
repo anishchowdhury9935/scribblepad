@@ -38,7 +38,7 @@ export default function Signup() {
     return (
         <div className='my-4 alog' style={{ "display": "flex" }}>
             <div style={{ "width": "32em" }} className='alog-item'>
-                <h3 style={{ "marginLeft": "25%" }}>It takes only a minute</h3>
+                <h3 style={{ "marginLeft": "22%" }}>It takes only a minute</h3>
                 <form onSubmit={Onsubmit}>
                     <div className="mb-3">
                         <label htmlFor="exampleInputName1" className="form-label" name='name'>Name:</label>

@@ -7,7 +7,7 @@ export default function Signup() {
         const name = document.getElementById("exampleInputName1").value
         const email = document.getElementById("exampleInputEmail1").value
         const password = document.getElementById("exampleInputPassword1").value
-        const host = "https://inotebook-backend-odkj.onrender.com" 
+        const host = "https://inotebook-backend-95j7.onrender.com" 
         // const host = "http://localhost:5000"
         // fetch api 
         const url = `${host}/api/users/auth/CreateUser`

@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Alert from './components/Alert'
-
+import AddNote from './components/AddNote';
 function App() {
   return (
     <div>
@@ -19,10 +19,11 @@ function App() {
       <NoteState>
         <Navbar companyName='inotebook'/>
         <Alert/>
-          <div className="middle-content container">
+          <div className="middle-content container" style={{"padding":"0 10vw","overflow":"hidden"}}>
             {/* all Routes */}
             <Routes>
-              <Route path="/" element={<Home/>} />
+              <Route path="/yournotes" element={<Home/>} />
+              <Route path="/" element={<AddNote/>} />
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login/>}/>
               <Route path="/signup" element={<Signup/>}/>

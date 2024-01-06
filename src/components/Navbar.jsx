@@ -14,9 +14,9 @@ export default function Navbar(props) {
 
     const togle_mode = () => {
         const nav = document.querySelector('label');
-        if (body.style.backgroundColor !== 'rgb(0, 3, 71)') {
+        if (body.style.backgroundColor !== 'rgb(17, 0, 33)') {
             body.style.color = "white"
-            body.style.backgroundColor = 'rgb(0, 3, 71)';
+            body.style.backgroundColor = 'rgb(17, 0, 33)';
             nav.style.color = "rgb(8, 8, 65)";
             setModeName('Dark mode')
             seticon('moon')
@@ -53,7 +53,7 @@ export default function Navbar(props) {
                                 <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname === "/link" ? "active" : ""}`} to="/link">Link</Link>
+                                <Link className={`nav-link ${location.pathname === "/yournotes" ? "active" : ""}`} to="/yournotes">Your notes</Link>
                             </li>
                         </ul>
                         <label className="form-check-label" htmlFor="flexSwitchCheckDefault" style={{ "color": "white" }}>{ModeName}</label>

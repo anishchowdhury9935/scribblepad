@@ -15,7 +15,7 @@ export default function AddNote() {
         getNotes()
     }
     return (
-        <div>
+        <div className='my-4' style={{"width":""}}>
             <h4>Add notes:</h4>
             <form className='my-3' id='add_notes_form'>
                 <div className="mb-3">

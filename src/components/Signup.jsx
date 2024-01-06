@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+const sign_in_img = require('../image/sign_in.png')
 export default function Signup() {
     const navigate = useNavigate()
     const Onsubmit = async (e) => {
@@ -35,8 +36,8 @@ export default function Signup() {
         if (password !== confirmPassword) { setDisablesign('disabled') } else { setDisablesign('') }
     }
     return (
-        <div className='my-4' style={{ "display": "flex" }}>
-            <div style={{ "width": "32em" }}>
+        <div className='my-4 alog' style={{ "display": "flex" }}>
+            <div style={{ "width": "32em" }} className='alog-item'>
                 <h3 style={{ "marginLeft": "25%" }}>It takes only a minute</h3>
                 <form onSubmit={Onsubmit}>
                     <div className="mb-3">
@@ -59,8 +60,8 @@ export default function Signup() {
                     <button type="submit" className={`btn btn-primary ${Disablesign}`}>Sign in</button>
                 </form>
             </div>
-            <div>
-
+            <div className='img-sign'>
+            <img className="img-fluid" src={`${sign_in_img}`} alt=""/>
             </div>
         </div>
     )

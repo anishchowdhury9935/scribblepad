@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from '../context/noteContext';
 import Noteitem from './Noteitem';
-import AddNote from './AddNote';
 const img =  require('../image/illustration.png')
 export default function Notes() {
     const context = useContext(noteContext)
@@ -73,14 +72,13 @@ export default function Notes() {
                     </div>
                 </div>
             </div>
-            <AddNote />
             <div className='row'>
                 <h4 className='your_notes' style={obj_your}>Your notes:</h4>
                 <div className="container">
                     {notes.length === 0 && notes_Nothing()}
                     <div className="nothing_notes"style={obj_notes}>
                         <h3>You haven't add any notes!</h3>
-                        <img style={{ "height":"100%" }} src={img} alt="alternatetext"></img>
+                        <img  style={{ "maxWidth":"100vw" }} src={img} alt="alternatetext"></img >
                     </div>
                 </div>
                 {notes.map((note) => {

@@ -1,6 +1,7 @@
 import React,{useContext} from 'react'
 import { useNavigate  } from "react-router-dom";
 import noteContext from '../context/noteContext';
+const login_img = require('../image/login.png')
 export default function Login() {
     const context = useContext(noteContext)
     const {allAlert } = context;
@@ -31,8 +32,8 @@ export default function Login() {
         }
     }
     return (
-        <div className='my-4'style={{"display":"flex"}}>
-            <div style={{"width":"32em"}}>
+        <div className='my-4 alog'style={{"display":"flex"}}>
+            <div style={{"width":"32em"}} className='alog-item'>
                 <form onSubmit={Onsubmit}>
                 <h3 style={{"marginLeft":"43%"}}>Login</h3>
                     <div className="mb-3">
@@ -47,8 +48,8 @@ export default function Login() {
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>
             </div>
-            <div>
-
+            <div className='img-log'>
+            <img className="img-fluid" src={`${login_img}`} alt=""/>
             </div>
         </div>
     )

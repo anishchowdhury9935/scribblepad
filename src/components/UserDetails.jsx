@@ -33,9 +33,9 @@ export default function UserDetails() {
                     {Name}
                 </button>
                 <ul className="dropdown-menu">
-                    <li className=" px-4 py-1 email"style={{"cursor":"pointer"}}onClick={(e)=>{navigator.clipboard.writeText(Email);e.preventDefault();}}>{Email}</li>
+                    <li className=" px-4 py-1 email dropdown-item"style={{"cursor":"pointer"}}onClick={(e)=>{navigator.clipboard.writeText(Email);e.preventDefault();}}>{Email}</li>
                     <li><hr className="dropdown-divider" /></li>
-                    <li className=" px-4 py-1"style={{"cursor":"pointer"}}>Joined in: {Date.slice(0,10)}</li>
+                    <li className=" px-4 py-1 dropdown-item"style={{"cursor":"pointer"}}>Joined in: {Date.slice(0,10)}</li>
                 </ul>
             </div></div>
     )

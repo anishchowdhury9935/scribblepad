@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 
 export default function UserDetails(props) {
-    const [Name, setName] = useState('')
-    const [Email, setEmail] = useState('Guest')
+    const [Name, setName] = useState('Guest')
+    const [Email, setEmail] = useState('please login')
     const [Date, setDate] = useState('')
     async function LogDtails () {
         try {

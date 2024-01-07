@@ -55,17 +55,7 @@ export default function Navbar(props) {
                             <li className="nav-item">
                                 <Link className={`nav-link ${location.pathname === "/yournotes" ? "active" : ""}`} to="/yournotes">Your notes</Link>
                             </li>
-                        </ul>
-                        <div style={{ "display": "flex", "alignItems": "center" }}>
-                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" style={{ "color": "white" }}>{ModeName}</label>
-                            <i className={`fa-solid fa-${icon} fa-bounce fa-xl`} style={{ ...icon_color, "cursor": "pointer", "margin": "0 0.4em 0 0.4em" }} onClick={togle_mode}></i>
-                            <div className="mobile-user" style={{"display":"none"}}>
-                                <UserDetails drop_center="dropup-center dropup" />
-                            </div>
-                                <div className="desktop-user">
-                                    <UserDetails drop_left="dropstart" />
-                                </div>
-                            <div className="btn-group dropstart">
+                            <div className="btn-group dropdown">
                                 <button type="button" className={`btn btn-${Sign_color} dropdown-toggle`} data-bs-toggle="dropdown" aria-expanded="false" >
                                     Log/Sign
                                 </button>
@@ -74,6 +64,16 @@ export default function Navbar(props) {
                                     <Link className={`btn btn-${Link_color}`} to="/login" role="button" id='login'>Login</Link>
                                 </form>
                             </div>
+                        </ul>
+                        <div style={{ "display": "flex", "alignItems": "center" }}>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" style={{ "color": "white" }}>{ModeName}</label>
+                            <i className={`fa-solid fa-${icon} fa-bounce fa-xl`} style={{ ...icon_color, "cursor": "pointer", "margin": "0 0.4em 0 0.4em" }} onClick={togle_mode}></i>
+                            <div className="mobile-user" style={{"display":"none"}}>
+                                <UserDetails drop_center="dropdown" />
+                            </div>
+                                <div className="desktop-user">
+                                    <UserDetails drop_left="dropstart" />
+                                </div>
                         </div>
                     </div>
                 </div>

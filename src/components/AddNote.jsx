@@ -1,8 +1,10 @@
-import React, { useState,useContext } from 'react'
+import React, { useState,useContext,useEffect } from 'react'
+import { useNavigate  } from "react-router-dom";
 import noteContext from '../context/noteContext';
 export default function AddNote() {
     const context = useContext(noteContext)
-    const { addnote,getNotes } = context;
+    const navigate = useNavigate()
+    const { addnote,getNotes,allAlert } = context;
     const [note,setNote] = useState({title:"",description:"",tag:""})
     const handleonclick = (e) => {
         e.preventDefault()
@@ -14,6 +16,13 @@ export default function AddNote() {
         setNote({...note,[e.target.name]:e.target.value})
         getNotes()
     }
+    function first_signup() {
+        if (localStorage.getItem('token') === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM") {
+            allAlert("please login or sign up first",'danger',{"display": "block"})
+            navigate('/Login')
+        }
+    }
+    useEffect(first_signup,[])
     return (
         <div className='my-4' style={{"width":""}}>
             <h4>Add notes:</h4>

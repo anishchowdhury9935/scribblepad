@@ -86,7 +86,7 @@ const NoteState = (props) => {
         })
     }
     // all Alert, setAlert, AlertStyle, setAlertStyle, AlertType, setAlertType
-    function allAlert(setAlert$="", setAlertType$="danger", setAlertStyle$={"display": "none"}) {
+    function allAlert(setAlert$="", setAlertType$="danger", setAlertStyle$={"display": "block"}) {
         const _docstring = "setAlert$,setAlertStyle$,setAlertType$"
         setAlert(setAlert$)
         setAlertType(setAlertType$)

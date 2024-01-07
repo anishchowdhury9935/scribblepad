@@ -1,18 +1,11 @@
-import React from 'react'
-import Notes from './Notes'; 
-// import noteContext from '../context/noteContext';
+import React,{useEffect} from 'react'
+import { useNavigate  } from "react-router-dom";
 export default function Home() {
-    // const context = useContext(noteContext)
-    // const { allAlert } = context;
-    // function first_signup() {
-    //     if (localStorage.getItem('token') === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM") {
-    //         allAlert("please login or sign up first",'danger',{"display": "block"})
-    //     }
-    // }
-    // useEffect(first_signup,[])
+    const navigate = useNavigate()
+    useEffect(()=>{
+        navigate('/AddNote')
+    },[])
     return (
-        <>
-        <Notes />
-        </>
+        <div>This is Home</div>
     )
-} 
+}

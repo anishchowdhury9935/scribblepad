@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useContext, useEffect } from 'react'
+import noteContext from '../context/noteContext';
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import UserDetails from './UserDetails';
 export default function Navbar(props) {
     const location = useLocation()
+    const context = useContext(noteContext)
+    const navigate = useNavigate()
+    const { allAlert } = context;
     const [ModeName, setModeName] = useState("Light mode")
     const [BootmodeName, setBootmodeName] = useState("dark")
     const [icon, seticon] = useState("sun")
@@ -10,13 +14,14 @@ export default function Navbar(props) {
     const [Link_color, setLink_color] = useState("dark")
     const [Sign_color, setSign_color] = useState("light")
     const body = document.querySelector('body');
+    let [LogOut_style,setLogOut_style] = useState({"display": "block"})
     body.style.transitionDuration = "0.4s"
 
     const togle_mode = () => {
         const nav = document.querySelector('label');
-        if (body.style.backgroundColor !== '#111827') {
+        if (body.style.backgroundColor !== 'rgb(24, 0, 45)') {
             body.style.color = "white"
-            body.style.backgroundColor = '#111827';
+            body.style.backgroundColor = 'rgb(24, 0, 45)'
             nav.style.color = "rgb(8, 8, 65)";
             setModeName('Dark mode')
             seticon('moon')
@@ -36,6 +41,17 @@ export default function Navbar(props) {
             setSign_color("light")
         }
     };
+    // logout
+    const LogOut = () => {
+        localStorage.setItem('token', '');
+        localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM");
+        allAlert('you have loged out', 'danger')
+        navigate('/login')
+        window.location.reload();
+    }
+    useEffect(()=>{if (localStorage.getItem('token') === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM') {
+        setLogOut_style({"display":"none"})
+    }},[])
     return (
         <div className="Navbar" >
             <nav className="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme={`${BootmodeName}`}>
@@ -52,28 +68,36 @@ export default function Navbar(props) {
                             <li className="nav-item ">
                                 <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
                             </li>
+                            <li className="nav-item ">
+                                <Link className={`nav-link ${location.pathname === "/AddNote" ? "active" : ""}`} to="/AddNote">Add note</Link>
+                            </li>
                             <li className="nav-item">
                                 <Link className={`nav-link ${location.pathname === "/yournotes" ? "active" : ""}`} to="/yournotes">Your notes</Link>
                             </li>
-                            <div className="btn-group dropdown">
+                            <li className="btn-group dropend nav-item">
                                 <button type="button" className={`btn btn-${Sign_color} dropdown-toggle`} data-bs-toggle="dropdown" aria-expanded="false" >
                                     Log/Sign
                                 </button>
-                                <form className="dropdown-menu " role="search">
+                                <form className="dropdown-menu " role="search" >
                                     <Link className={`btn btn-${Sign_color} mx-1`} to="/signup" role="button">Sign up</Link>
                                     <Link className={`btn btn-${Link_color}`} to="/login" role="button" id='login'>Login</Link>
                                 </form>
-                            </div>
+                            </li>
                         </ul>
                         <div style={{ "display": "flex", "alignItems": "center" }}>
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault" style={{ "color": "white" }}>{ModeName}</label>
-                            <i className={`fa-solid fa-${icon} fa-bounce fa-xl`} style={{ ...icon_color, "cursor": "pointer", "margin": "0 0.4em 0 0.4em" }} onClick={togle_mode}></i>
-                            <div className="mobile-user" style={{"display":"none"}}>
+                            <i className={`fa-solid fa-${icon} fa-xl`} style={{ ...icon_color, "cursor": "pointer", "margin": "0 0.4em 0 0.4em" }} onClick={togle_mode}></i>
+                            <div className="mobile-user" style={{ "display": "none" }}>
                                 <UserDetails drop_center="dropdown" />
                             </div>
-                                <div className="desktop-user">
-                                    <UserDetails drop_left="dropstart" />
-                                </div>
+                            <div className="desktop-user">
+                                <UserDetails drop_left="dropstart" />
+                            </div>
+                            <div className='logout' style={LogOut_style}>
+                                <button type="button" className={`btn btn-${Sign_color}`} aria-expanded="false" onClick={LogOut} >
+                                    logout
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -40,7 +40,7 @@ export default function Notes() {
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={ref} style={{ "visibility": "hidden" }}>
                 Launch demo modal
             </button>
-            <div style={{ "position": "absolute", "width": "100vw" }}>
+            <div style={{ "position": "absolute", "width": "100vw","marginLeft":"-46px","color":"rgb(24, 0, 45)" }}>
                 <div className="modal fade modal-dialog modal-dialog-centered" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ "transition": "all", "transitionDuration": "0.5s", "display": "none", "margin": "auto" }}>
                     <div className="modal-dialog">
                         <div className="modal-content">

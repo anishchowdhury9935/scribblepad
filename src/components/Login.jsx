@@ -11,7 +11,6 @@ export default function Login() {
         const email = document.getElementById("exampleInputEmail1").value
         const password = document.getElementById("exampleInputPassword1").value
         const host = "https://inotebook-backend-95j7.onrender.com" 
-        // const host = "http://localhost:5000"
         // fetch api 
         const url = `${host}/api/users/auth/Login`
         const response = await fetch(url, {
@@ -24,14 +23,14 @@ export default function Login() {
         const json = await response.json();
         if (json.authdata) { 
             localStorage.setItem("token", json.authdata)
-            navigate('/')
+            navigate('/AddNote')
             window.location.reload();
             allAlert("you have logged in successfully✅","success",{"display": "block"})
         }else{
             if (typeof(json.error === 'object')) {
                 allAlert("please enter your Login credentials❌","danger",{"display": "block"})
             }else{
-                allAlert(json.error,"success",{"display": "block"})
+                allAlert(json.error,"success")
                 
             }
         }

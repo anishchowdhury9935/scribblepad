@@ -6,8 +6,8 @@ export default function Alert() {
         allAlert("","",{"display": "none"})
     }, 5000);
     return (
-        <div style={AlertStyle}>
-            <div class={`alert alert-${AlertType}`} role="alert">
+        <div style={{...AlertStyle,"position":"absolute","marginTop":"4px","marginLeft":"4px"}}>
+            <div className={`alert alert-${AlertType}`} role="alert">
                 {Alert}
             </div>
         </div>

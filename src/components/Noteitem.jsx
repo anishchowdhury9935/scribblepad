@@ -14,7 +14,7 @@ export default function Noteitem(props) {
                     </div>
                     <p className="card-text">{note.description}</p>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <i className="fa-solid fa-trash" onClick={()=>{deleteNote(note._id);getNotes()}}></i>
+                        <i className="fa-solid fa-trash" onClick={()=>{deleteNote(note._id);}}></i>
                         <i className="fa-regular fa-pen-to-square fa-rotate-180" onClick={()=>{updatenote(note,note._id)}}></i>
                     </div>
                 </div>

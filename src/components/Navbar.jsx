@@ -69,7 +69,7 @@ export default function Navbar(props) {
                                 <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
                             </li>
                             <li className="nav-item ">
-                                <Link className={`nav-link ${location.pathname === "/AddNote" ? "active" : ""}`} to="/AddNote">Add note</Link>
+                                <Link className={`nav-link ${location.pathname === "/AddNote" ? "active" : ""}`} to="/AddNote">Add notes</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className={`nav-link ${location.pathname === "/yournotes" ? "active" : ""}`} to="/yournotes">Your notes</Link>

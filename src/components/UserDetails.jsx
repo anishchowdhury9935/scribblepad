@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 
 export default function UserDetails(props) {
     const [Name, setName] = useState('Guest')
-    const [Email, setEmail] = useState('please login')
+    const [Email, setEmail] = useState(`guest${Math.floor(Math.random() * 300 + 100)}@gmail.com`)
     const [Date, setDate] = useState('')
     async function LogDtails () {
         try {

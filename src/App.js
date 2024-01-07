@@ -17,7 +17,7 @@ function App() {
     <div>
         <Router>
       <NoteState>
-        <Navbar companyName='My notebook'/>
+        <Navbar companyName='ScribblePad'/>
         <Alert/>
           <div className="middle-content container" style={{"padding":"0 10vw","overflow":"hidden"}}>
             {/* all Routes */}

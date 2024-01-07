@@ -5,7 +5,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import noteContext from '../context/noteContext';
+import noteContext from './context/noteContext';
 import Home from './components/Home';
 import About from './components/About';
 import NoteState from './context/NoteState';

@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-export default function UserDetails() {
+export default function UserDetails(props) {
     const [Name, setName] = useState('')
     const [Email, setEmail] = useState('')
     const [Date, setDate] = useState('')
@@ -27,8 +27,8 @@ export default function UserDetails() {
     }
     LogDtails()
     return (
-        <div>
-            <div className="btn-group dropstart mx-1">
+        <div>                          
+            <div className={`btn-group ${props.drop_left} mx-1 ${props.drop_center}`}>
                 <button type="button" className="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     {Name}
                 </button>

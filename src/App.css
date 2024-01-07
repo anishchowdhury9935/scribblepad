@@ -41,4 +41,11 @@
   .alog-item{
     width: auto;
   }
+  .mobile-user{
+    display: block !important;
+  }
+  .desktop-user{
+    display: none;
+  }
+
 }

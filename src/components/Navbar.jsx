@@ -14,9 +14,9 @@ export default function Navbar(props) {
 
     const togle_mode = () => {
         const nav = document.querySelector('label');
-        if (body.style.backgroundColor !== 'rgb(17, 0, 33)') {
+        if (body.style.backgroundColor !== '#111827') {
             body.style.color = "white"
-            body.style.backgroundColor = 'rgb(17, 0, 33)';
+            body.style.backgroundColor = '#111827';
             nav.style.color = "rgb(8, 8, 65)";
             setModeName('Dark mode')
             seticon('moon')

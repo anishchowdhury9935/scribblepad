@@ -29,23 +29,34 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .middle-content{
+  .middle-content {
     padding: 0 0;
   }
-  .img-sign , .img-log{
-    display: none;
-  }
-  .alog{
-    display: block;
-  }
-  .alog-item{
-    width: auto;
-  }
-  .mobile-user{
-    display: block !important;
-  }
-  .desktop-user{
+
+  .img-sign,
+  .img-log {
     display: none;
   }
 
+  .alog {
+    display: block;
+  }
+
+  .alog-item {
+    width: auto;
+  }
+
+  .mobile-user {
+    display: block !important;
+  }
+
+  .desktop-user {
+    display: none;
+  }
+
+  #alert-qp30 {
+    width: 98vw !important;
+    margin-top: 70vh !important;
+    right:34vw;
+  }
 }

@@ -57,7 +57,6 @@
   #alert-qp30 {
     width: 98vw !important;
     margin-top: 70vh !important;
-    display: flex !important;
     justify-content: center;
   }
 }

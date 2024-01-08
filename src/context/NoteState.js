@@ -89,11 +89,12 @@ const NoteState = (props) => {
         })
     }
     // all Alert, setAlert, AlertStyle, setAlertStyle, AlertType, setAlertType
-    function allAlert(setAlert$="", setAlertType$="danger", setAlertStyle$={"display": "block"}) {
-        const _docstring = "setAlert$,setAlertStyle$,setAlertType$"
+    function allAlert(setAlert$="", setAlertType$="danger", setAlertStyle$={"display": "flex"}) {
+        const _docstring = "---| You have to give the argument in this manner => setAlert$,setAlertType$,setAlertStyle$ |---"
         setAlert(setAlert$)
         setAlertType(setAlertType$)
         setAlertStyle(setAlertStyle$)
+        return _docstring
     }
     const value = { notes, Alert, setnotes, addnote, deleteNote, editNote, getNotes, AlertStyle, AlertType, allAlert}
     return (

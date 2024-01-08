@@ -24,7 +24,7 @@ export default function Signup() {
         })
         const json = await response.json();
         if (json.authdata) {
-            localStorage.setItem("token", json.authdata)
+            // localStorage.setItem("token", json.authdata)
             navigate('/')
             window.location.reload();
         } else {

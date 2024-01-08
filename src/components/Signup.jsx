@@ -41,21 +41,21 @@ export default function Signup() {
                 <h3 style={{ "marginLeft": "22%" }}>It takes only a minute</h3>
                 <form onSubmit={Onsubmit}>
                     <div className="mb-3">
-                        <label htmlFor="exampleInputName1" className="form-label" name='name'>Name:</label>
-                        <input type="text" className="form-control" id="exampleInputName1" aria-describedby="emailHelp" />
+                        <label htmlFor="exampleInputName1" className="form-label" name='name' >Name:</label>
+                        <input type="text" className="form-control" id="exampleInputName1" aria-describedby="emailHelp" required />
                         <div id="emailHelp" className="form-text"></div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label" name='email'>Email<div style={{ "fontSize": "0.9em" }}>We'll never share your email with anyone else.</div></label>
-                        <input type="email" className="form-control" id="exampleInputEmail1" />
+                        <input type="email" className="form-control" id="exampleInputEmail1" required />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPassword1" className="form-label" name='password'>Password:</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" onChange={disable_sign_in} />
+                        <input type="password" className="form-control" id="exampleInputPassword1" onChange={disable_sign_in} required />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputconfirmPassword1" className="form-label">Confirm password:</label>
-                        <input type="password" className="form-control" id="exampleInputconfirmPassword1" onChange={disable_sign_in} />
+                        <input type="password" className="form-control" id="exampleInputconfirmPassword1" onChange={disable_sign_in} required />
                     </div>
                     <button type="submit" className={`btn btn-primary ${Disablesign}`}>Sign in</button>
                 </form>

@@ -14,9 +14,10 @@ export default function Navbar(props) {
     const [Link_color, setLink_color] = useState("dark")
     const [Sign_color, setSign_color] = useState("light")
     const body = document.querySelector('body');
+    const [Title_text, seTtitle_text] = useState("Home")
     let [LogOut_style,setLogOut_style] = useState({"display": "block"})
     body.style.transitionDuration = "0.4s"
-
+    document.title = "Scribble pad "+`| ${Title_text}`
     const togle_mode = () => {
         const nav = document.querySelector('label');
         if (body.style.backgroundColor !== 'rgb(24, 0, 45)') {
@@ -49,9 +50,17 @@ export default function Navbar(props) {
         navigate('/login')
         window.location.reload();
     }
+    function title_text_func() {
+        if (location.pathname === location.pathname) {
+            seTtitle_text(`${location.pathname.slice(1)}`)
+        }
+    }
     useEffect(()=>{if (localStorage.getItem('token') === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM') {
         setLogOut_style({"display":"none"})
     }},[])
+    useEffect(()=>{
+        title_text_func()
+    },[location.pathname])
     return (
         <div className="Navbar" >
             <nav className="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme={`${BootmodeName}`}>
@@ -79,6 +88,7 @@ export default function Navbar(props) {
                                     Log/Sign
                                 </button>
                                 <form className="dropdown-menu " role="search" >
+                                <title>wdwdwdw</title>
                                     <Link className={`btn btn-${Sign_color} mx-1`} to="/signup" role="button">Sign up</Link>
                                     <Link className={`btn btn-${Link_color}`} to="/login" role="button" id='login'>Login</Link>
                                 </form>

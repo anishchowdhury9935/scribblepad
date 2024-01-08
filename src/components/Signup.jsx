@@ -1,17 +1,17 @@
-import React, { useState,useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import noteContext from '../context/noteContext';
 import { useNavigate } from "react-router-dom";
 const sign_in_img = require('../image/sign_in.png')
 export default function Signup() {
     const context = useContext(noteContext)
-    const {allAlert } = context;
+    const { allAlert } = context;
     const navigate = useNavigate()
     const Onsubmit = async (e) => {
         e.preventDefault()
         const name = document.getElementById("exampleInputName1").value
         const email = document.getElementById("exampleInputEmail1").value
         const password = document.getElementById("exampleInputPassword1").value
-        const host = "https://inotebook-backend-95j7.onrender.com" 
+        const host = "https://inotebook-backend-95j7.onrender.com"
         // const host = "http://localhost:5000"
         // fetch api 
         const url = `${host}/api/users/auth/CreateUser`
@@ -28,12 +28,11 @@ export default function Signup() {
             navigate('/')
             window.location.reload();
         } else {
-            if (typeof(json.errors === 'object')) {
-                allAlert(json.errors[0].msg,"danger")
-            }else{
-                allAlert("you have sign up successfully✅","success") 
+            if (json) {
+                allAlert(json.errors[0].msg || json.errors, "danger") 
             }
         }
+        console.log(json.errors);
     }
     const [Disablesign, setDisablesign] = useState('')
     function disable_sign_in() {
@@ -67,7 +66,7 @@ export default function Signup() {
                 </form>
             </div>
             <div className='img-sign'>
-            <img className="img-fluid" src={`${sign_in_img}`} alt=""/>
+                <img className="img-fluid" src={`${sign_in_img}`} alt="" />
             </div>
         </div>
     )

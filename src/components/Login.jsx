@@ -25,12 +25,10 @@ export default function Login() {
             localStorage.setItem("token", json.authdata)
             navigate('/AddNote')
             window.location.reload();
-            allAlert("you have logged in successfully✅","success",{"display": "block"})
+            allAlert("you have logged in successfully✅","success")
         }else{
-            if (typeof(json.errors === 'object')) {
-                allAlert("please enter your Login credentials❌","danger")
-            }else{
-                allAlert("you have sign up successfully✅","success")
+            if (json.errors !== undefined ) {
+                allAlert(json.errors[0].msg || json.errors || "please enter your Login credentials❌","danger")
             }
         }
     }

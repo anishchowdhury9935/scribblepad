@@ -48,6 +48,9 @@ const NoteState = (props) => {
         })
         const note = await response.json();
         // logic for adding notes
+        if (Array.isArray(note.errors)){
+            allAlert(note.errors[0].msg,"danger")
+        }
         setnotes(notes.concat(note))
     }
     //delete a Note

@@ -50,7 +50,7 @@ export default function Navbar(props) {
         navigate('/login')
         window.location.reload();
     }
-    function title_text_func() {
+    let title_text_func = ()=> {
         if (location.pathname === location.pathname) {
             seTtitle_text(`${location.pathname.slice(1)}`)
         }
@@ -113,7 +113,6 @@ export default function Navbar(props) {
                 </div>
             </nav>
         </div>
-
     )
 }
 

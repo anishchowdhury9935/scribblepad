@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
 export default function UserDetails(props) {
     const [Name, setName] = useState('Guest')
     const [Email, setEmail] = useState(`guest${Math.floor(Math.random() * 300 + 100)}@gmail.com`)
-    const [Date, setDate] = useState('')
+    const [date, setDate] = useState("")
     async function LogDtails () {
         try {
             const host = "https://inotebook-backend-95j7.onrender.com" 
@@ -25,7 +25,9 @@ export default function UserDetails(props) {
             
         }
     }
-    LogDtails()
+    useEffect(()=>{
+        LogDtails()
+    },[])
     return (
         <div>                          
             <div className={`btn-group ${props.drop_left} mx-1 ${props.drop_center}`}>
@@ -35,7 +37,7 @@ export default function UserDetails(props) {
                 <ul className="dropdown-menu">
                     <li className=" px-4 py-1 email dropdown-item"style={{"cursor":"pointer"}}onClick={(e)=>{navigator.clipboard.writeText(Email);e.preventDefault();}}>{Email}</li>
                     <li><hr className="dropdown-divider" /></li>
-                    <li className=" px-4 py-1 dropdown-item"style={{"cursor":"pointer"}}>Joined in: {Date.slice(0,10)}</li>
+                    <li className=" px-4 py-1 dropdown-item"style={{"cursor":"pointer"}}>Joined in: {date.slice(0,10)}</li>
                 </ul>
             </div></div>
     )

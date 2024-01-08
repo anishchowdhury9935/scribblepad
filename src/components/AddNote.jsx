@@ -11,6 +11,7 @@ export default function AddNote() {
         addnote(note); 
         setNote({title:" ",description:" ",tag:" "})
         getNotes()
+        
     }
     const onChange = (e) => {
         setNote({...note,[e.target.name]:e.target.value})

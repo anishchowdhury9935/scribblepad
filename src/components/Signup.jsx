@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
+import noteContext from '../context/noteContext';
 import { useNavigate } from "react-router-dom";
 const sign_in_img = require('../image/sign_in.png')
 export default function Signup() {
+    const context = useContext(noteContext)
+    const {allAlert } = context;
     const navigate = useNavigate()
     const Onsubmit = async (e) => {
         e.preventDefault()
@@ -25,14 +28,17 @@ export default function Signup() {
             navigate('/')
             window.location.reload();
         } else {
-            alert("Please enter")
+            if (typeof(json.errors === 'object')) {
+                allAlert(json.errors[0].msg,"danger")
+            }else{
+                allAlert("you have sign up successfully✅","success") 
+            }
         }
     }
     const [Disablesign, setDisablesign] = useState('')
     function disable_sign_in() {
         const password = document.getElementById("exampleInputPassword1").value
         const confirmPassword = document.getElementById("exampleInputconfirmPassword1").value
-        console.log(password);
         if (password !== confirmPassword) { setDisablesign('disabled') } else { setDisablesign('') }
     }
     return (

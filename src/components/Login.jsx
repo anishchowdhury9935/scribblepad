@@ -27,11 +27,10 @@ export default function Login() {
             window.location.reload();
             allAlert("you have logged in successfully✅","success",{"display": "block"})
         }else{
-            if (typeof(json.error === 'object')) {
-                allAlert("please enter your Login credentials❌","danger",{"display": "block"})
+            if (typeof(json.errors === 'object')) {
+                allAlert("please enter your Login credentials❌","danger")
             }else{
-                allAlert(json.error,"success")
-                
+                allAlert("you have sign up successfully✅","success")
             }
         }
     }

@@ -4,20 +4,21 @@ import Noteitem from './Noteitem';
 const img =  require('../image/illustration.png')
 export default function Notes() {
     const context = useContext(noteContext)
-    const { notes, getNotes, editNote } = context;
+    const { notes, getNotes, editNote,allAlert } = context;
     const [note, setNote] = useState({ etitle: "", edescription: "", etag: "", id: "" })
     const ref = useRef(null)
     useEffect(() => {
         getNotes()
-    },[])
+        console.log('run');
+    },[note])
     let updatenote = (curentnote, id) => {
         ref.current.click()
-        setNote({ etitle: curentnote.title, edescription: curentnote.description, etag: curentnote.tag })
-        getNotes()
+        setNote({ etitle: curentnote.title, edescription: curentnote.description, etag: curentnote.tag, id: id })
     }
     const handleonclick = (e) => {
         e.preventDefault()
         editNote(note.id, note.etitle, note.edescription, note.etag)
+        allAlert('updated successfully',"success")
         getNotes()
     } 
     const onChange = (e) => {

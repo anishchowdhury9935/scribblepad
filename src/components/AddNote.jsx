@@ -10,12 +10,9 @@ export default function AddNote() {
         e.preventDefault()
         addnote(note); 
         setNote({title:" ",description:" ",tag:" "})
-        getNotes()
-        
     }
     const onChange = (e) => {
         setNote({...note,[e.target.name]:e.target.value})
-        getNotes()
     }
     function first_signup() {
         if (localStorage.getItem('token') === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM") {

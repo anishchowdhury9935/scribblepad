@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const sign_in_img = require('../image/sign_in.png')
 export default function Signup() {
     const context = useContext(noteContext)
-    const { allAlert } = context;
+    const { allAlert,setProgress} = context;
     const navigate = useNavigate()
     const Onsubmit = async (e) => {
         e.preventDefault()
@@ -15,6 +15,7 @@ export default function Signup() {
         // const host = "http://localhost:5000"
         // fetch api 
         const url = `${host}/api/users/auth/CreateUser`
+        setProgress(32)
         const response = await fetch(url, {
             method: 'post',
             headers: {
@@ -22,9 +23,9 @@ export default function Signup() {
             },
             body: JSON.stringify({ name, email, password })
         })
+        setProgress(62)
         const json = await response.json();
         if (json.authdata) {
-            // localStorage.setItem("token", json.authdata)
             navigate('/')
             window.location.reload();
         } else {
@@ -32,7 +33,7 @@ export default function Signup() {
                 allAlert(json.errors[0].msg || json.errors, "danger") 
             }
         }
-        console.log(json.errors);
+        setProgress(100)
     }
     const [Disablesign, setDisablesign] = useState('')
     function disable_sign_in() {

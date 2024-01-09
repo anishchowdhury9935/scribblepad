@@ -13,12 +13,14 @@ import Signup from './components/Signup';
 import Alert from './components/Alert'
 import AddNote from './components/AddNote';
 import Home from './components/Home';
+import ReactLoder from './components/ReactLoder';
 function App() {
   return (
     <div>
       <Router>
         <NoteState>
           <Navbar companyName='Scribble pad' />
+          <ReactLoder/>
           <Alert />
           <div className="middle-content container" style={{ "padding": "0 10vw", "overflow": "hidden" }}>
             {/* all Routes */}

@@ -1,12 +1,15 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
+import Loder from './Loder'
 
 export default function UserDetails(props) {
-    const [Name, setName] = useState('Guest')
+    const [visible, setvisible] = useState(false)
+    const [Name, setName] = useState(localStorage.getItem('token') === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM" ? "Guest" : " ")
     const [Email, setEmail] = useState(`guest${Math.floor(Math.random() * 300 + 100)}@gmail.com`)
     const [date, setDate] = useState("")
-    async function LogDtails () {
+    async function LogDtails() {
         try {
-            const host = "https://inotebook-backend-95j7.onrender.com" 
+            setvisible(true)
+            const host = "https://inotebook-backend-95j7.onrender.com"
             // const host = "http://localhost:5000"
             const auth_token = localStorage.getItem('token');
             const url = `${host}/api/users/auth/getUser`
@@ -21,24 +24,31 @@ export default function UserDetails(props) {
             setEmail(data.email)
             setName(data.name)
             setDate(data.date)
+            setvisible(false)
         } catch (error) {
-            
+
+        } finally {
+            setvisible(false)
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         LogDtails()
-    },[])
+    }, [])
     return (
-        <div>                          
+        <div>
             <div className={`btn-group ${props.drop_left} mx-1 ${props.drop_center}`}>
-                <button type="button" className="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {Name}
+                <button type="button" className="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={{ "display": "flex", "alignItems": "center" }}>
+                    <div style={{ "display": "flex" }}>
+                        <Loder visible={visible} height={'26'} weight={'26'} color={"#18002D"} />
+                        {Name}
+                    </div>
                 </button>
                 <ul className="dropdown-menu">
-                    <li className=" px-4 py-1 email dropdown-item"style={{"cursor":"pointer"}}onClick={(e)=>{navigator.clipboard.writeText(Email);e.preventDefault();}}>{Email}</li>
+                    <li className=" px-4 py-1 email dropdown-item" style={{ "cursor": "pointer" }} onClick={(e) => { navigator.clipboard.writeText(Email); e.preventDefault(); }}>{Email}</li>
                     <li><hr className="dropdown-divider" /></li>
-                    <li className=" px-4 py-1 dropdown-item"style={{"cursor":"pointer"}}>Joined in: {date.slice(0,10)}</li>
+                    <li className=" px-4 py-1 dropdown-item" style={{ "cursor": "pointer" }}>Joined in: {date.slice(0, 10)}</li>
                 </ul>
-            </div></div>
+            </div>
+        </div>
     )
 }

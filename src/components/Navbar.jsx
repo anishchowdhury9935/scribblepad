@@ -6,7 +6,7 @@ export default function Navbar(props) {
     const location = useLocation()
     const context = useContext(noteContext)
     const navigate = useNavigate()
-    const { allAlert } = context;
+    const { allAlert,getNotes } = context;
     const [ModeName, setModeName] = useState("Light mode")
     const [BootmodeName, setBootmodeName] = useState("dark")
     const [icon, seticon] = useState("sun")
@@ -81,14 +81,13 @@ export default function Navbar(props) {
                                 <Link className={`nav-link ${location.pathname === "/AddNote" ? "active" : ""}`} to="/AddNote">Add notes</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link ${location.pathname === "/yournotes" ? "active" : ""}`} to="/yournotes">Your notes</Link>
+                                <Link className={`nav-link ${location.pathname === "/yournotes" ? "active" : ""}`} to="/yournotes" onClick={getNotes}>Your notes</Link>
                             </li>
                             <li className="btn-group dropend nav-item">
                                 <button type="button" className={`btn btn-${Sign_color} dropdown-toggle`} data-bs-toggle="dropdown" aria-expanded="false" >
                                     Log/Sign
                                 </button>
                                 <form className="dropdown-menu " role="search" >
-                                <title>wdwdwdw</title>
                                     <Link className={`btn btn-${Sign_color} mx-1`} to="/signup" role="button">Sign up</Link>
                                     <Link className={`btn btn-${Link_color}`} to="/login" role="button" id='login'>Login</Link>
                                 </form>

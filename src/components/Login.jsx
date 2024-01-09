@@ -4,7 +4,7 @@ import noteContext from '../context/noteContext';
 const login_img = require('../image/login.png')
 export default function Login() {
     const context = useContext(noteContext)
-    const {allAlert } = context;
+    const {allAlert,setProgress } = context;
     const navigate = useNavigate()
     const Onsubmit = async (e) => {
         e.preventDefault()
@@ -13,6 +13,7 @@ export default function Login() {
         const host = "https://inotebook-backend-95j7.onrender.com" 
         // fetch api 
         const url = `${host}/api/users/auth/Login`
+        setProgress(28)
         const response = await fetch(url, {
             method: 'post',
             headers: {
@@ -20,7 +21,9 @@ export default function Login() {
             },
             body: JSON.stringify({ email, password })
         })
+        setProgress(59)
         const json = await response.json();
+        setProgress(92)
         if (json.authdata) { 
             localStorage.setItem("token", json.authdata)
             navigate('/AddNote')
@@ -31,6 +34,7 @@ export default function Login() {
                 allAlert(json.errors[0].msg || json.errors || "please enter your Login credentials❌","danger")
             }
         }
+        setProgress(100)
     }
     return (
         <div className='my-4 alog'style={{"display":"flex"}}>

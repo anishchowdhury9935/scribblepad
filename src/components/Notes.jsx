@@ -1,16 +1,12 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import noteContext from '../context/noteContext';
 import Noteitem from './Noteitem';
 const img =  require('../image/illustration.png')
 export default function Notes() {
     const context = useContext(noteContext)
-    const { notes, getNotes, editNote,allAlert } = context;
+    const { notes, editNote,allAlert } = context;
     const [note, setNote] = useState({ etitle: "", edescription: "", etag: "", id: "" })
     const ref = useRef(null)
-    useEffect(() => {
-        getNotes()
-        console.log('run');
-    },[note])
     let updatenote = (curentnote, id) => {
         ref.current.click()
         setNote({ etitle: curentnote.title, edescription: curentnote.description, etag: curentnote.tag, id: id })
@@ -19,11 +15,9 @@ export default function Notes() {
         e.preventDefault()
         editNote(note.id, note.etitle, note.edescription, note.etag)
         allAlert('updated successfully',"success")
-        getNotes()
     } 
     const onChange = (e) => {
         setNote({...note, [e.target.name]: e.target.value })
-        getNotes()
     }
     let obj_notes = {"width":"100%","display":"none","flexDirection":"column","alignItems":"center","height":"32vh"};
     let obj_your = {"display":"block"};
@@ -79,7 +73,7 @@ export default function Notes() {
                     {notes.length === 0 && notes_Nothing()}
                     <div className="nothing_notes"style={{...obj_notes,"height":"100%"}}>
                         <h3>You haven't add any notes!</h3>
-                        <img src={img} alt="alternatetext"></img >
+                        <img src={img} alt=""></img >
                     </div>
                 </div>
                 {notes.map((note) => {

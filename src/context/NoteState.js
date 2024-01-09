@@ -1,6 +1,8 @@
 import NoteContext from "./noteContext";
 import { useState } from "react";
 const NoteState = (props) => {
+    const [Progress, setProgress] = useState(0)
+    console.log(Progress);
     const [Alert, setAlert] = useState("")
     const [AlertStyle, setAlertStyle] = useState({ "display": "none" })
     const [AlertType, setAlertType] = useState("success") // there is two types of AlertType DANGER , SUCCESS
@@ -13,6 +15,7 @@ const NoteState = (props) => {
     const [notes, setnotes] = useState(notesinitial)
     //get all notes
     const getNotes = async () => {
+        setProgress(18)
         const url = `${host}/api/users/notes/fetchallnotes`;
         // fetch api  
         async function fetchDataAndRespond(url, callback) {
@@ -24,10 +27,14 @@ const NoteState = (props) => {
                         "auth-token": auth_token
                     }
                 });
+                setProgress(57)
                 const data = await response.json();
+                setProgress(80)
                 callback(data, null);
             } catch (error) {
                 callback([], error);
+            }finally{
+                setProgress(100)
             }
         }
         // calling the above method
@@ -50,6 +57,8 @@ const NoteState = (props) => {
         // logic for adding notes
         if (Array.isArray(note.errors)){
             allAlert(note.errors[0].msg,"danger")
+        }else{
+            allAlert("note added","success")
         }
         setnotes(notes.concat(note))
     }
@@ -96,7 +105,7 @@ const NoteState = (props) => {
         setAlertStyle(setAlertStyle$)
         return _docstring
     }
-    const value = { notes, Alert, setnotes, addnote, deleteNote, editNote, getNotes, AlertStyle, AlertType, allAlert}
+    const value = { notes, Alert, setnotes, addnote, deleteNote, editNote, getNotes, AlertStyle, AlertType, allAlert,Progress,setProgress}
     return (
         <NoteContext.Provider value={value}>
             {props.children}
@@ -104,6 +113,5 @@ const NoteState = (props) => {
 
     )
 }
-
 
 export default NoteState;

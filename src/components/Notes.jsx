@@ -3,10 +3,13 @@ import noteContext from '../context/noteContext';
 import Noteitem from './Noteitem';
 const img =  require('../image/illustration.png')
 export default function Notes() {
+    const [note, setNote] = useState({ etitle: "", edescription: "", etag: "", id: "" })
     const context = useContext(noteContext)
     const { notes, editNote,allAlert,getNotes } = context;
-    const [note, setNote] = useState({ etitle: "", edescription: "", etag: "", id: "" })
     const ref = useRef(null)
+    const onChange = (e) => {
+        setNote({...note, [e.target.name]: e.target.value })
+    }
     let updatenote = (curentnote, id) => {
         ref.current.click()
         setNote({ etitle: curentnote.title, edescription: curentnote.description, etag: curentnote.tag, id: id })
@@ -14,10 +17,9 @@ export default function Notes() {
     const handleonclick = () => {
         editNote(note.id, note.etitle, note.edescription, note.etag)
         allAlert('updated successfully',"success")
+        getNotes()
+        getNotes()
     } 
-    const onChange = (e) => {
-        setNote({...note, [e.target.name]: e.target.value })
-    }
     let obj_notes = {"width":"100%","display":"none","flexDirection":"column","alignItems":"center","height":"32vh"};
     let obj_your = {"display":"block"};
     const notes_Nothing = ()=>{
@@ -61,7 +63,7 @@ export default function Notes() {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button disabled={note.etitle.length === 0 || note.edescription.length === 0} type="button" className="btn btn-primary" onClick={()=>{handleonclick();getNotes()}}>Save changes</button>
+                                    <button disabled={note.etitle.length === 0 || note.edescription.length === 0} type="button" className="btn btn-primary" onClick={handleonclick}>Save changes</button>
                                 </div>
                             </div>
                         </div>

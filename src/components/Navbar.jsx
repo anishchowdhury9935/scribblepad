@@ -20,7 +20,6 @@ export default function Navbar(props) {
     document.title = "Scribble pad "+`| ${Title_text}`
     const togle_mode = () => {
         const nav = document.querySelector('label');
-        // localStorage.setItem('mode',"false")
         if (localStorage.getItem('mode') !== 'true'){
             localStorage.setItem('mode','true')
             body.style.color = "white"
@@ -32,7 +31,6 @@ export default function Navbar(props) {
             seticon_color({ "color": "#080841" });
             setLink_color("light")
             setSign_color("dark")
-            console.log(true);
         } else {
             localStorage.setItem('mode','false')
             body.style.color = "rgb(8, 8, 65)"
@@ -44,7 +42,6 @@ export default function Navbar(props) {
             seticon_color({ "color": "white" });
             setLink_color("dark")
             setSign_color("light")
-            console.log(false);
         }
     };
     // logout
@@ -62,7 +59,8 @@ export default function Navbar(props) {
     }
     useEffect(()=>{if (localStorage.getItem('token') === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM') {
         setLogOut_style({"display":"none"})
-    }},[])
+        
+    }togle_mode()},[])
     useEffect(()=>{
         title_text_func()
     },[location.pathname])

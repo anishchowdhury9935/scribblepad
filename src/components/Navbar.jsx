@@ -6,7 +6,7 @@ export default function Navbar(props) {
     const location = useLocation()
     const context = useContext(noteContext)
     const navigate = useNavigate()
-    const { allAlert,getNotes } = context;
+    const { allAlert, getNotes } = context;
     const [ModeName, setModeName] = useState("Light mode")
     const [BootmodeName, setBootmodeName] = useState("dark")
     const [icon, seticon] = useState("sun")
@@ -15,13 +15,13 @@ export default function Navbar(props) {
     const [Sign_color, setSign_color] = useState("light")
     const body = document.querySelector('body');
     const [Title_text, seTtitle_text] = useState("Home")
-    let [LogOut_style,setLogOut_style] = useState({"display": "block"})
+    let [LogOut_style, setLogOut_style] = useState({ "display": "block" })
     body.style.transitionDuration = "0.4s"
-    document.title = "Scribble pad "+`| ${Title_text}`
+    document.title = "Scribble pad " + `| ${Title_text}`
+    const nav = document.querySelector('label');
     const togle_mode = () => {
-        const nav = document.querySelector('label');
-        if (localStorage.getItem('mode') !== 'true'){
-            localStorage.setItem('mode','true')
+        if (localStorage.getItem('mode') !== 'true') {
+            localStorage.setItem('mode', 'true')
             body.style.color = "white"
             body.style.backgroundColor = 'rgb(24, 0, 45)'
             nav.style.color = "rgb(8, 8, 65)";
@@ -32,7 +32,7 @@ export default function Navbar(props) {
             setLink_color("light")
             setSign_color("dark")
         } else {
-            localStorage.setItem('mode','false')
+            localStorage.setItem('mode', 'false')
             body.style.color = "rgb(8, 8, 65)"
             nav.style.color = "white";
             body.style.backgroundColor = 'white'
@@ -43,7 +43,9 @@ export default function Navbar(props) {
             setLink_color("dark")
             setSign_color("light")
         }
+
     };
+
     // logout
     const LogOut = () => {
         localStorage.setItem('token', '');
@@ -52,18 +54,43 @@ export default function Navbar(props) {
         navigate('/login')
         window.location.reload();
     }
-    let title_text_func = ()=> {
+    let title_text_func = () => {
         if (location.pathname === location.pathname) {
             seTtitle_text(`${location.pathname.slice(1)}`)
         }
     }
-    useEffect(()=>{if (localStorage.getItem('token') === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM') {
-        setLogOut_style({"display":"none"})
-        
-    }togle_mode()},[])
-    useEffect(()=>{
+    useEffect(() => {
+        if (localStorage.getItem('token') === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM') {
+            setLogOut_style({ "display": "none" })}
+            try {
+            if (localStorage.getItem('mode') === 'true') {
+                body.style.color = "white"
+                body.style.backgroundColor = 'rgb(24, 0, 45)'
+                nav.style.color = "rgb(8, 8, 65)";
+                setModeName('Dark mode')
+                seticon('moon')
+                setBootmodeName(" ")
+                seticon_color({ "color": "#080841" });
+                setLink_color("light")
+                setSign_color("dark")
+            } else {
+                localStorage.setItem('mode', 'false')
+                body.style.color = "rgb(8, 8, 65)"
+                nav.style.color = "white";
+                body.style.backgroundColor = 'white'
+                setModeName('Light mode')
+                setBootmodeName("dark")
+                seticon("sun")
+                seticon_color({ "color": "white" });
+                setLink_color("dark")
+                setSign_color("light")
+            }
+        } catch (error) {
+        }
+    }, [])
+    useEffect(() => {
         title_text_func()
-    },[location.pathname])
+    }, [location.pathname])
     return (
         <div className="Navbar" >
             <nav className="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme={`${BootmodeName}`}>

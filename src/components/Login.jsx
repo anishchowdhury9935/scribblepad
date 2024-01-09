@@ -29,6 +29,7 @@ export default function Login() {
             navigate('/AddNote')
             window.location.reload();
             allAlert("you have logged in successfully✅","success")
+            localStorage.setItem('mode','false')
         }else{
             if (json.errors !== undefined ) {
                 allAlert(json.errors[0].msg || json.errors || "please enter your Login credentials❌","danger")

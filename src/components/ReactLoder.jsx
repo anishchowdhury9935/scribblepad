@@ -11,6 +11,7 @@ export default function ReactLoder() {
                 progress={Progress}
                 onLoaderFinished={() => ({ Progress: 0 })}
                 transitionTime={150}
+                height = {3}
             />
     </div>
   )

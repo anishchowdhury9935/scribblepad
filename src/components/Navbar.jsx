@@ -20,7 +20,9 @@ export default function Navbar(props) {
     document.title = "Scribble pad "+`| ${Title_text}`
     const togle_mode = () => {
         const nav = document.querySelector('label');
-        if (body.style.backgroundColor !== 'rgb(24, 0, 45)') {
+        // localStorage.setItem('mode',"false")
+        if (localStorage.getItem('mode') !== 'true'){
+            localStorage.setItem('mode','true')
             body.style.color = "white"
             body.style.backgroundColor = 'rgb(24, 0, 45)'
             nav.style.color = "rgb(8, 8, 65)";
@@ -30,16 +32,19 @@ export default function Navbar(props) {
             seticon_color({ "color": "#080841" });
             setLink_color("light")
             setSign_color("dark")
+            console.log(true);
         } else {
+            localStorage.setItem('mode','false')
             body.style.color = "rgb(8, 8, 65)"
             nav.style.color = "white";
             body.style.backgroundColor = 'white'
-            setModeName('light mode')
+            setModeName('Light mode')
             setBootmodeName("dark")
             seticon("sun")
             seticon_color({ "color": "white" });
             setLink_color("dark")
             setSign_color("light")
+            console.log(false);
         }
     };
     // logout

@@ -1,8 +1,9 @@
 import NoteContext from "./noteContext";
 import { useState } from "react";
 const NoteState = (props) => {
+    const notesinitial = []
+    const [notes, setnotes] = useState(notesinitial)
     const [Progress, setProgress] = useState(0)
-    console.log(Progress);
     const [Alert, setAlert] = useState("")
     const [AlertStyle, setAlertStyle] = useState({ "display": "none" })
     const [AlertType, setAlertType] = useState("success") // there is two types of AlertType DANGER , SUCCESS
@@ -11,8 +12,6 @@ const NoteState = (props) => {
     // first login
     localStorage.getItem("token") === null && localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM")
     let auth_token = localStorage.getItem('token')
-    const notesinitial = []
-    const [notes, setnotes] = useState(notesinitial)
     //get all notes
     const getNotes = async () => {
         setProgress(18)

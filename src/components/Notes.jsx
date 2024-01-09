@@ -4,15 +4,14 @@ import Noteitem from './Noteitem';
 const img =  require('../image/illustration.png')
 export default function Notes() {
     const context = useContext(noteContext)
-    const { notes, editNote,allAlert } = context;
+    const { notes, editNote,allAlert,getNotes } = context;
     const [note, setNote] = useState({ etitle: "", edescription: "", etag: "", id: "" })
     const ref = useRef(null)
     let updatenote = (curentnote, id) => {
         ref.current.click()
         setNote({ etitle: curentnote.title, edescription: curentnote.description, etag: curentnote.tag, id: id })
     }
-    const handleonclick = (e) => {
-        e.preventDefault()
+    const handleonclick = () => {
         editNote(note.id, note.etitle, note.edescription, note.etag)
         allAlert('updated successfully',"success")
     } 
@@ -35,33 +34,35 @@ export default function Notes() {
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" ref={ref} style={{ "visibility": "hidden" }}>
                 Launch demo modal
             </button>
-            <div style={{ "position": "absolute", "width": "100vw","marginLeft":"-46px","color":"rgb(24, 0, 45)" }}>
-                <div className="modal fade modal-dialog modal-dialog-centered" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ "transition": "all", "transitionDuration": "0.5s", "display": "none", "margin": "auto" }}>
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Update your notes</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                <form className='my-3' id='add_notes_form'>
-                                    <div className="mb-3">
-                                        <label className="form-label">Title</label>
-                                        <input htmlFor="title" type="text" className="form-control" id="etitle " name="etitle" placeholder="notes title" value={note.etitle} onChange={onChange} />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">description</label>
-                                        <input type="text" className="form-control" id="edescription" name="edescription" placeholder="your description" value={note.edescription} onChange={onChange} />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">tag</label>
-                                        <input type="text" className="form-control" id="etag" name="etag" placeholder="your tag" value={note.etag} onChange={onChange} />
-                                    </div>
-                                </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button disabled={note.etitle.length === 0 && note.edescription.length ===0} type="button" className="btn btn-primary" onClick={handleonclick}>Save changes</button>
+            <div style={{"display":"flex","justifyContent":"center"}}>
+                <div style={{ "position": "absolute", "width": "100vw","color":"rgb(24, 0, 45)" }}>
+                    <div className="modal fade modal-dialog modal-dialog-centered" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ "transition": "all", "transitionDuration": "0.5s", "display": "none", "margin": "auto" }}>
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="exampleModalLabel">Update your notes</h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    <form className='my-3' id='add_notes_form'>
+                                        <div className="mb-3">
+                                            <label className="form-label">Title</label>
+                                            <input htmlFor="title" type="text" className="form-control" id="etitle " name="etitle" placeholder="notes title" value={note.etitle} onChange={onChange} />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">description</label>
+                                            <input type="text" className="form-control" id="edescription" name="edescription" placeholder="your description" value={note.edescription} onChange={onChange} />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label className="form-label">tag</label>
+                                            <input type="text" className="form-control" id="etag" name="etag" placeholder="your tag" value={note.etag} onChange={onChange} />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button disabled={note.etitle.length === 0 || note.edescription.length === 0} type="button" className="btn btn-primary" onClick={()=>{handleonclick();getNotes()}}>Save changes</button>
+                                </div>
                             </div>
                         </div>
                     </div>

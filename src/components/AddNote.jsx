@@ -4,7 +4,7 @@ import noteContext from '../context/noteContext';
 export default function AddNote() {
     const context = useContext(noteContext)
     const navigate = useNavigate()
-    const { addnote,getNotes,allAlert } = context;
+    const { addnote,allAlert } = context;
     const [note,setNote] = useState({title:"",description:"",tag:""})
     const handleonclick = (e) => {
         e.preventDefault()

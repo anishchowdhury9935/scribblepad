@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import noteContext from '../context/noteContext';
 import { useNavigate } from "react-router-dom";
-const sign_in_img = require('../image/sign_in.png')
+const sign_in_img = require('../image/sign_in.avif')
 export default function Signup() {
     const context = useContext(noteContext)
     const { allAlert,setProgress} = context;

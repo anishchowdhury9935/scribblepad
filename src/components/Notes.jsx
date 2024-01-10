@@ -1,7 +1,7 @@
 import { useContext, useRef, useState } from 'react'
 import noteContext from '../context/noteContext';
 import Noteitem from './Noteitem';
-const img =  require('../image/illustration.png')
+const img =  require('../image/illustration.avif')
 export default function Notes() {
     const [note, setNote] = useState({ etitle: "", edescription: "", etag: "", id: "" })
     const context = useContext(noteContext)

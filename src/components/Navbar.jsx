@@ -61,19 +61,24 @@ export default function Navbar(props) {
     }
     useEffect(() => {
         if (localStorage.getItem('token') === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM') {
-            setLogOut_style({ "display": "none" })}
-            try {
+            setLogOut_style({ "display": "none" })
+        }}, [])
+    useEffect(() => {
+        title_text_func()
+    }, [location.pathname])
+    useEffect(() => {
+        try {
             if (localStorage.getItem('mode') === 'true') {
                 body.style.color = "white"
                 body.style.backgroundColor = 'rgb(24, 0, 45)'
                 nav.style.color = "rgb(8, 8, 65)";
                 setModeName('Dark mode')
                 seticon('moon')
-                setBootmodeName(" ")
+                setBootmodeName(" ") 
                 seticon_color({ "color": "#080841" });
                 setLink_color("light")
-                setSign_color("dark")
-            } else {
+                setSign_color("dark") 
+            } else { 
                 localStorage.setItem('mode', 'false')
                 body.style.color = "rgb(8, 8, 65)"
                 nav.style.color = "white";
@@ -87,13 +92,10 @@ export default function Navbar(props) {
             }
         } catch (error) {
         }
-    }, [])
-    useEffect(() => {
-        title_text_func()
-    }, [location.pathname])
+    })
     return (
         <div className="Navbar" >
-            <nav className="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme={`${BootmodeName}`}>
+            <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme={`${BootmodeName}`} >
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">{props.companyName}</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

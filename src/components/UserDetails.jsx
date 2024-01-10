@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useContext } from 'react'
 import Loder from './Loder'
-
+import noteContext from '../context/noteContext'
 export default function UserDetails(props) {
+    const context = useContext(noteContext);
+    const { allAlert } = context;
     const [visible, setvisible] = useState(false)
     const [Name, setName] = useState(localStorage.getItem('token') === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM" ? "Guest" : " ")
     const [Email, setEmail] = useState(`guest${Math.floor(Math.random() * 300 + 100)}@gmail.com`)
@@ -44,7 +46,7 @@ export default function UserDetails(props) {
                     </div>
                 </button>
                 <ul className="dropdown-menu">
-                    <li className=" px-4 py-1 email dropdown-item" style={{ "cursor": "pointer" }} onClick={(e) => { navigator.clipboard.writeText(Email); e.preventDefault(); }}>{Email}</li>
+                    <li className=" px-4 py-1 email dropdown-item" style={{ "cursor": "pointer" }} onClick={(e) => { navigator.clipboard.writeText(Email); e.preventDefault(); allAlert("copied✅","success"); }}>{Email}</li>
                     <li><hr className="dropdown-divider" /></li>
                     <li className=" px-4 py-1 dropdown-item" style={{ "cursor": "pointer" }}>Joined in: {date.slice(0, 10)}</li>
                 </ul>

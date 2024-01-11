@@ -1,10 +1,10 @@
 import React from 'react'
-import {ThreeCircles} from "react-loader-spinner";
+import {Oval} from "react-loader-spinner";
 export default function Loder(props) {
     const {visible,height="80",width="80",color="#4fa94d"} = props
   return (
     <div style={{}}>
-        <ThreeCircles
+        <Oval
   visible={visible}
   height={height}
   width={width}

@@ -26,11 +26,11 @@ export default function UserDetails(props) {
             setEmail(data.email)
             setName(data.name)
             setDate(data.date)
-            // setvisible(false)
+            setvisible(false)
         } catch (error) {
 
         } finally {
-            // setvisible(false)
+            setvisible(false)
         }
     }
     useEffect(() => {
@@ -42,7 +42,7 @@ export default function UserDetails(props) {
                 <button type="button" className="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style={{ "display": "flex", "alignItems": "center" }}>
                     <div style={{ "display": "flex" }}>
                         <Loder visible={visible} height={'26'} weight={'26'} color={"#18002D"} />
-                        {/* {Name} */}
+                        {Name}
                     </div>
                 </button>
                 <ul className="dropdown-menu">

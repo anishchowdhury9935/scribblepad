@@ -6,9 +6,8 @@ const NoteState = (props) => {
     const [Progress, setProgress] = useState(0)
     const [Alert, setAlert] = useState("")
     const [AlertStyle, setAlertStyle] = useState({ "display": "none" })
-    const [AlertType, setAlertType] = useState("success") // there is two types of AlertType DANGER , SUCCESS
-    const host = "https://inotebook-backend-95j7.onrender.com" 
-    // const host = "http://localhost:5000"
+    const [AlertType, setAlertType] = useState("success") // there is two types of AlertType DANGER , SUCCESS 
+    const host = "http://localhost:5000"
     // first login
     localStorage.getItem("token") === null && localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM")
     let auth_token = localStorage.getItem('token')

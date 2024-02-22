@@ -7,7 +7,7 @@ const NoteState = (props) => {
     const [Alert, setAlert] = useState("")
     const [AlertStyle, setAlertStyle] = useState({ "display": "none" })
     const [AlertType, setAlertType] = useState("success") // there is two types of AlertType DANGER , SUCCESS
-    const host = process.env.serverAddress ;
+    const host = "https://inotebook-backend-95j7.onrender.com" ;
     // first login
     localStorage.getItem("token") === null && localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7fSwiaWF0IjoxNzA0NDY5NDk3fQ.uZX3xZzBt5GJY0ZhhtDQ9kPkTRURtvwcKq8wAYcnKPM")
     let auth_token = localStorage.getItem('token')
